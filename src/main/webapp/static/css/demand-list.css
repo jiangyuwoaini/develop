@@ -1,0 +1,62 @@
+/*         需求列表页面       */
+#main{
+    padding-top: 20px;
+    background-color: #FFFFFF;
+}
+.demand-cat{
+    margin: 20px 10px;
+}
+.left-bar{
+    font-size: 18px;
+    font-weight: bold;
+    width: 80px;
+}
+.demand-cat span{
+    font-size: 18px;
+    display: inline-block;
+    margin: 0 5px;
+    padding: 5px 15px;
+    cursor:pointer;
+}
+#list-content{
+    overflow: hidden;
+}
+.list-item{
+    padding: 10px;
+    border: 1px solid #D7D7D7;
+    float:left;
+    width:480px;
+    margin: 20px;
+    background-color: #F8F8F9;
+}
+.list-item p {
+    padding: 10px 10px;
+}
+.align-right{
+    float:right;
+    width:200px;
+}
+.btn-span:hover, .btn-checked{
+     background-color: #FF2A2A;
+     color: white;
+ }
+.btn-checked{
+    background-color: #FF2A2A;
+    color: white;
+}
+.city-hidden{
+    display: none;
+}
+#city{
+    padding: 10px 50px;
+}
+#city span{
+    padding: 5px 10px;
+    margin: 5px 10px;
+    color: blue;
+}
+#city span:hover{
+    background-color: #FF2A2A;
+    color:white;
+    cursor: pointer;
+}

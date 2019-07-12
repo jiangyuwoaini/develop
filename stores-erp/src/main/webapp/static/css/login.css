@@ -1,0 +1,227 @@
+/* 网站页面名称 开始 */
+.login_name{
+  width: 100%;
+  background: #fff;
+}
+.login_name>div{
+  width: 1200px;
+  margin: 0 auto;
+  height: 96px;
+  line-height: 96px;
+}
+.login_name>div>span{
+  color: #2a2a2a;
+}
+.lgName{
+  font-size: 30px;
+  margin-left: 15px;
+}
+.lgNames{
+  font-size: 28px;
+  color: #2a2a2a;
+  font-weight: 100
+}
+.lgNamedes{
+  display: inline-block;
+  width: 80px;
+  height: 40px;
+  line-height: 40px;
+}
+.lgNamedes>span{
+  display: block;
+  height: 50%;
+  line-height: 20px;
+  font-size: 16px;
+}
+.login_name>div>span:last-child{
+  float: right;
+  margin-right: 15px;
+}
+/* 网站页面名称 结束 */
+
+/* 内容部分  开始 */
+#login{
+  width: 100%;
+  height: 540px;
+  background: #fd4062;
+}
+.loginWrap{
+  width: 1200px;
+  height: 100%;
+  margin: 0 auto;
+}
+.login_left{
+  float: left;
+  width: 420px;
+  height: 100%;
+  margin-left: 60px;
+}
+.login_left h3{
+  margin-top: 100px;
+  line-height: 125px;
+  font-size: 72px;
+  color: #fff;
+  font-weight: 500;
+  letter-spacing: 15px;
+}
+.login_left>p{
+  color: #fff;
+  line-height: 104px;
+  font-size: 48px;
+}
+.login_left>p:last-child{
+  font-size: 30px;
+}
+.login_right{
+  float: right;
+  width: 306px;
+  background: #fff;
+  margin-top: 66px;
+  padding: 0px 28px;
+}
+.loginSelect{
+  width: 100%;
+  height: 62px;
+  margin-bottom: 24px;
+}
+.loginSelect>div{
+  float: left;
+  width: 50%;
+  height: 60px;
+  line-height: 60px;
+  text-align: center;
+  border-bottom: 2px solid #fff;
+}
+#active{
+  border-color: #ff2929;
+  color: #ff2929;
+}
+.usernameWrap,.regWrap{
+  display: none;
+  overflow: hidden;
+}
+#activeWrap{
+  display: block;
+}
+.username{
+  margin-top: 20px;
+}
+.usernameWrap{
+  margin-left: 12px;
+}
+.username,.userpwd{
+  width: 292px;
+  height: 36px;
+  border: 1px solid #dbdbdb;
+  margin-bottom: 20px;
+}
+.username>span,.userpwd>span{
+  display: inline-block;
+  float: left;
+  width: 22px;
+  height: 22px;
+  padding: 7px;
+  border-right: 1px solid #dbdbdb;
+  background: #ececec;
+}
+.userpwd{
+  position: relative;
+}
+.userpwd>span.eye{
+  border: 0;
+  background: #fff;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+.username>span>img,.userpwd>span>img{
+  width: 100%;
+}
+.username>input,.userpwd>input{
+  border: 0;
+  width: 240px;
+  height: 100%;
+  padding-left: 15px;
+  outline: none;
+}
+.logindes{
+  margin-bottom: 32px;
+  overflow: hidden;
+}
+.logindes>span{
+  margin-left: 15px;
+  float: left;
+  font-size: 12px;
+}
+.logindes>a{
+  float: right;
+  font-size: 12px;
+  color: #252fff;
+}
+.login_btn{
+  margin-bottom: 25px;
+}
+.login_btn input{
+  width: 100%;
+  height: 42px;
+  border: 0;
+  outline: none;
+  background: #ff1c1c;
+  color: #fff;
+  text-align: center;
+  line-height: 42px;
+  border-radius: 6px;
+  font-size: 18px;
+  cursor: pointer;
+}
+.remember{
+  margin-bottom: 25px;
+}
+.remember>span:last-child{
+  float: right;
+}
+.remember>span{
+  display: inline-block;
+  height: 25px;
+  line-height: 25px;
+}
+.remember>span>label{
+  font-size: 12px;
+}
+/* 注册 开始 */
+.regWwrap{
+  width: 100%;
+}
+.regWrap div{
+  width: 100%;
+  height: 39px;
+  margin-bottom: 19px;
+}
+.regWrap div>span{
+  display: inline-block;
+  float: left;
+  width: 85px;
+  height: 39px;
+  line-height: 39px;
+  font-size: 16px;
+}
+.regWrap div>input{
+  outline: none;
+  width: 209px;
+  height: 37px;
+  padding-left: 10px;
+  border: 1px solid #dbdbdb;
+}
+.regBtn{
+  width: 100%;
+  height: 40px;
+  border: 0;
+  color: #fff;
+  background: #ff2929;
+  border-radius: 5px;
+  margin-bottom: 30px;
+  font-size: 18px;
+  cursor: pointer;
+}
+/* 注册 结束 */
+/* 内容部分  结束 */

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.mapper.BuildingMapper">
+	<select id="findBuilding" parameterType="com.example.demo.pojo.Building" resultType="com.example.demo.pojo.Building">
+		select * from building
+	</select>
+	<select id="findBuildingone" parameterType="com.example.demo.pojo.Building" resultType="com.example.demo.pojo.Building">
+		select * from building
+		<where>
+			<if test="bid !=null and bid !=''">
+				AND bid LIKE CONCAT(CONCAT('%',#{bid},'%')) 
+			</if>
+			<if test="bwidth !=null and bwidth !=''">
+				AND bwidth LIKE CONCAT(CONCAT('%',#{bwidth},'%')) 
+			</if>
+			<if test="bsid !=null and bsid !=''">
+				AND bsid LIKE CONCAT(CONCAT('%',#{bsid},'%')) 
+			</if>
+			<if test="btime !=null and btime !=''">
+				AND btime LIKE CONCAT(CONCAT('%',#{btime},'%'))
+			</if>
+		</where>
+		 ORDER BY bid
+	</select>
+	
+	<delete id="deleteBuilding" parameterType="com.example.demo.pojo.Building">
+		delete from  building where id = #{id}
+	</delete>
+	
+	 <select id="findBuildings" parameterType="com.example.demo.pojo.Building" resultType="com.example.demo.pojo.Building">
+		select * from building
+		<where>
+			<if test="id!=null and id !=''">
+				id=#{id}
+			</if>
+		</where> 
+	</select>
+	
+	<update id="updateBuilding"  parameterType="com.example.demo.pojo.Building" >
+		update building 
+		<set>
+			<if test="bid!=null and bid !=''">
+				bid=#{bid},
+			</if>
+			<if test="bwidth!=null and bwidth !=''">
+				bwidth=#{bwidth},
+			</if>
+			<if test="bsid!=null and bsid !=''">
+				bsid=#{bsid},
+			</if>
+			<if test="btime!=null and btime !=''">
+				btime=#{btime}
+			</if>
+		</set>
+		<where>
+			id=#{id}
+		</where>
+	</update>
+	
+	<insert id="insertBuilding" parameterType="com.example.demo.pojo.Building">
+		INSERT INTO
+		building(id,bid,bwidth,bsid,btime)VALUES
+		(#{id},#{bid},#{bwidth},#{bsid},#{btime})
+	</insert>
+</mapper>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+           	
+	<bean id="processEngineConfiguration" class="org.activiti.engine.impl.cfg.StandaloneInMemProcessEngineConfiguration">
+<!-- 1,第一种方式-->
+		<property name="eventListeners">
+			<list>
+<!--				<bean class="com.lblz.activity.event.ProcessEventListener"></bean>-->
+			<bean class="com.lblz.activity.event.CustomEventListener"></bean>
+			</list>
+		</property>
+<!-- 2,第二种方式 根据类型进行触发事件的 -->
+	<property name="typedEventListeners">
+		<map>
+			<entry key="PROCESS_STARTED">
+				<list>
+					<bean class="com.lblz.activity.event.ProcessEventListener"></bean>
+				</list>
+			</entry>
+		</map>
+	</property>
+	</bean>
+
+
+	<bean id="commandInvoker" class="com.lblz.activity.interceptor.MDCCcommandInvoker"></bean>
+</beans>

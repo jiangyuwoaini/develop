@@ -1,0 +1,15 @@
+2021-05-07 16:55:59,708 INFO [main] com.lblz.activity.test.DemoMain [DemoMain.java : 36] 程序启动成功
+2021-05-07 16:56:01,068 INFO [main] o.a.e.c.DefaultActiviti5CompatibilityHandlerFactory [DefaultActiviti5CompatibilityHandlerFactory.java : 38] Activiti 5 compatibility handler implementation not found or error during instantiation : org.activiti.compatibility.DefaultActiviti5CompatibilityHandler. Activiti 5 backwards compatibility disabled.
+2021-05-07 16:56:01,082 INFO [main] o.a.engine.impl.db.DbSqlSession [DbSqlSession.java : 1147] performing create on engine with resource org/activiti/db/create/activiti.h2.create.engine.sql
+2021-05-07 16:56:01,127 INFO [main] o.a.engine.impl.db.DbSqlSession [DbSqlSession.java : 1147] performing create on history with resource org/activiti/db/create/activiti.h2.create.history.sql
+2021-05-07 16:56:01,131 INFO [main] o.a.engine.impl.db.DbSqlSession [DbSqlSession.java : 1147] performing create on identity with resource org/activiti/db/create/activiti.h2.create.identity.sql
+2021-05-07 16:56:01,134 INFO [main] o.a.engine.impl.ProcessEngineImpl [ProcessEngineImpl.java : 87] ProcessEngine default created
+2021-05-07 16:56:01,195 INFO [main] com.lblz.activity.test.DemoMain [DemoMain.java : 120] 流程引擎名称[default],版本[6.0.0.4]
+2021-05-07 16:56:01,730 INFO [main] com.lblz.activity.test.DemoMain [DemoMain.java : 111] 流程定义文件[二级审批流程],流程id
+2021-05-07 16:56:01,753 INFO [main] com.lblz.activity.test.DemoMain [DemoMain.java : 96] 流程启动[second_approve]
+2021-05-07 16:56:01,763 INFO [main] com.lblz.activity.test.DemoMain [DemoMain.java : 53] 待处理任务[填写审批信息]
+2021-05-07 16:56:01,782 INFO [main] com.lblz.activity.test.DemoMain [DemoMain.java : 76] 请输入 申请信息:
+2021-05-07 16:56:05,029 INFO [main] com.lblz.activity.test.DemoMain [DemoMain.java : 88] 你输入的内容是[1]
+2021-05-07 16:56:05,029 INFO [main] com.lblz.activity.test.DemoMain [DemoMain.java : 76] 请输入 申请人名称:
+2021-05-07 16:56:15,990 INFO [main] com.lblz.activity.test.DemoMain [DemoMain.java : 88] 你输入的内容是[2]
+2021-05-07 16:56:15,990 INFO [main] com.lblz.activity.test.DemoMain [DemoMain.java : 80] 请输入提交时间?格式(yyyy-MM-dd)

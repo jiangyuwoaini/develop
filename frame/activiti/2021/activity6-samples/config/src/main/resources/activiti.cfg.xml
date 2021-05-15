@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+           	
+	<bean id="processEngineConfiguration" class="org.activiti.engine.impl.cfg.StandaloneInMemProcessEngineConfiguration">
+		<property name="jdbcUrl" value="jdbc:mysql://localhost/activiti_example?nullCatalogMeansCurrent=TRUE&amp;useUnicode=true&amp;characterEncoding=utf-8" />
+<!--		<property name="jdbcDriver" value="com.mysql.jdbc.Driver" />--> <!--似乎不需要手动加载驱动 -->
+		<property name="jdbcUsername" value="root" />
+		<property name="jdbcPassword" value="jy321" />
+<!--		<property name="databaseSchema" value="create-drop" /> &lt;!&ndash; 确保空数据库,创建之前删表 缺点程序手动关闭不会删除&ndash;&gt;-->
+		<property name="databaseSchemaUpdate" value="true" /> <!-- 会更新表不会删除表 但是会遗留脏数据 -->
+<!--		<property name="asyncExecutorActivate" value="false" />-->
+<!--		&lt;!&ndash; <property name="mailServerHost" value="mail.my-corp.com" />-->
+<!--		<property name="mailServerPort" value="5025" /> &ndash;&gt;-->
+	</bean>
+</beans>

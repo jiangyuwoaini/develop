@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+           	
+	<bean id="processEngineConfiguration" class="org.activiti.engine.impl.cfg.StandaloneInMemProcessEngineConfiguration">
+<!--		<property name="jdbcUrl" value="jdbc:mysql://localhost/activiti_example?nullCatalogMeansCurrent=TRUE&amp;useUnicode=true&amp;characterEncoding=utf-8" />-->
+<!--		<property name="jdbcDriver" value="com.mysql.jdbc.Driver" />--> <!--似乎不需要手动加载驱动 -->
+<!--		<property name="jdbcUsername" value="root" />-->
+<!--		<property name="jdbcPassword" value="jy321" />-->
+<!--		<property name="databaseSchema" value="create-drop" /> &lt;!&ndash; 确保空数据库,创建之前删表 缺点程序手动关闭不会删除&ndash;&gt;-->
+<!--		<property name="databaseSchemaUpdate" value="true" /> &lt;!&ndash; 自动更新脚本&ndash;&gt;-->
+<!-- 		<property name="dbHistoryUsed" value="true" />  &lt;!&ndash; 是否使用历史数据 &ndash;&gt;-->
+<!--		<property name="dbIdentityUsed" value="true"/> &lt;!&ndash; 是否使用身份数据 &ndash;&gt;-->
+<!--		<property name="databaseTablePrefix" value="t_"/> &lt;!&ndash; 默认给表加上一个前缀 &ndash;&gt;-->
+<!--		<property name="databaseType" value="mysql" /> &lt;!&ndash; 设置数据库类型 &ndash;&gt;-->
+		<property name="dataSource" ref="dataSource" />
+<!--		<property name="asyncExecutorActivate" value="false" />-->
+<!--		&lt;!&ndash; <property name="mailServerHost" value="mail.my-corp.com" />-->
+<!--		<property name="mailServerPort" value="5025" /> &ndash;&gt;-->
+	</bean>
+	<bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource">
+		<property name="url" value="jdbc:mysql://localhost/activiti_example?nullCatalogMeansCurrent=TRUE&amp;useUnicode=true&amp;characterEncoding=utf-8" />
+		<property name="driverClassName" value="com.mysql.jdbc.Driver" /><!--似乎不需要手动加载驱动 -->
+		<property name="username" value="root" />
+		<property name="password" value="jy321" />
+		<property name="initialSize" value="1" /> <!--初始化连接数 -->
+		<property name="maxActive" value="10" /> <!--最大连接数-->
+		<property name="filters" value="stat,slf4j" /> <!--监控-->
+	</bean>
+</beans>

@@ -1,0 +1,104 @@
+1.kafka是什么？
+  1.一个分布式的流处理框架
+  2.用于构建实时数据管道和流应用程序
+  3.是消息中间件的一种
+  4.消息发布&订阅
+  5.高效并实时处理
+  6.数据安全的在分布式中进行副本存储
+
+2.什么是消息中间件：
+
+	生产者和消费者
+	妈妈：生产者   做馒头
+	自己：消费者   吃馒头
+	生产一个馒头   你吃一个
+
+	问题：
+	1）你吃的时候，卡住了，新产生的馒头可能就丢失了
+	2）1分钟能做10个，你吃1分钟只能吃3个，可能会有7个的馒头的丢失
+
+	如何解决这个问题？
+
+	馒头 做好 放到盘子中，你直接去盘子中拿馒头进行消费
+	盘子： 消息中间件（kafka）  馒头：数据流 
+
+	producer： 生产者   生产馒头   妈妈
+	consumer： 消费者   消费馒头   你、兄弟姐们
+	kafka cluster/broker: 盘子
+	topic： 主题、标签     topic1（你）   topic2（兄弟姐们） 
+3.消息模型可以分为两种：队列和发布-订阅式
+	1.队列的处理方式是一组消费者从服务器读取消息，一条消息只有其中的一个消费者来处理
+	2.发布-订阅模型中，消息被广播给所有的消费者，接收到消息的消费者都可以处理此消息
+4.kafka核心概念
+	producer:发送消息的对象
+	consumer:订阅并消费消息的对象，消费者可以消费1个或者N个主题
+	topic:每一类消息的主题，kafka将消息按照主题分类
+	Broker:发布消息(生成的消息)保存在一组服务器上，称之为kafka集群。集群中的每个服务器都是一个Broker
+5. kafka有四个核心API介绍
+	1.producer API,发布消息到1个或多个topic中。
+	2.consumer API来订阅一个或多个topic,并处理产生的消息。
+    3.streams API充当一个流处理器,从1个或多个topic消费输入流,并产生一个输出流到1个或多个topic,有效地将输入流转换到输出流。
+	4.connector API允许构建或运行可重复使用的生产者或消费者,将topic链接到现有的应用程序或数据系统。 
+
+
+zoo.cfg
+启动zk：./zkServer.sh start
+
+
+server.properties
+broker.id=0  broker的全局唯一编号，不能重复
+log.dirs=/home/hadoop/tmp/kafka-logs
+
+建议大家将kafka的bin配置到系统环境变量中
+export KAFKA_HOME=/home/hadoop/installpkgs/kafka
+export PATH=$KAFKA_HOME/bin:$PATH
+
+启动kafkaserver
+kafka-server-start.sh $KAFKA_HOME/config/server.properties
+
+创建topic
+kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic test_api
+
+查看所有的topic
+kafka-topics.sh --list --zookeeper localhost:2181
+
+启动生产者
+kafka-console-producer.sh --broker-list localhost:9092 --topic test_api
+
+启动消费者
+kafka-console-consumer.sh --zookeeper localhost:2181 --topic test_api --注意--from-beginning的用法g
+
+注意--from-beginning的用法
+
+
+
+
+
+
+单节点多broker
+kafka-server-start.sh $KAFKA_HOME/config/server-1.properties &
+kafka-server-start.sh $KAFKA_HOME/config/server-2.properties &
+kafka-server-start.sh $KAFKA_HOME/config/server-3.properties &
+
+
+kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 3 --partitions 1 --topic my-replicated-topic
+
+
+启动生产者
+kafka-console-producer.sh --broker-list localhost:9093,localhost:9094,localhost:9095 --topic my-replicated-topic
+
+启动消费者
+kafka-console-consumer.sh --zookeeper localhost:2181 --topic my-replicated-topic --from-beginning
+
+查看某个指定topic的信息
+kafka-topics.sh --describe --zookeeper localhost:2181 --topic my-replicated-topic
+
+
+
+
+
+
+
+
+
+

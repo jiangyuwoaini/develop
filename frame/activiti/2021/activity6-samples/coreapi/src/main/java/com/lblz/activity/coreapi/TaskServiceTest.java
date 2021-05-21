@@ -2,6 +2,8 @@ package com.lblz.activity.coreapi;
 
 import com.google.common.collect.Maps;
 import com.mysql.cj.x.protobuf.MysqlxCrud;
+import net.sf.json.JSONArray;
+import net.sf.json.JSONObject;
 import org.activiti.engine.TaskService;
 import org.activiti.engine.runtime.ProcessInstance;
 import org.activiti.engine.task.*;
@@ -16,6 +18,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.util.CollectionUtils;
 
+import java.io.FileInputStream;
+import java.nio.ByteBuffer;
+import java.nio.channels.FileChannel;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -137,5 +142,45 @@ public class TaskServiceTest {
         for (Event taskEvent : taskEvents) {
             LOGGER.info("taskEvent = {}",taskEvent);
         }
+    }
+
+    @Test
+    public void transition() throws Exception {
+        String tableJsonData = null;
+        FileInputStream fileStream = new FileInputStream("E:\\下载的东西\\微信\\WeChat Files\\wxid_b8hihkx6qvv522\\FileStorage\\File\\2021-05\\projet-json.txt");
+        //1.获取通道
+        FileChannel channel = fileStream.getChannel();
+        //2.分配指定大小的缓冲区 非直接缓冲区
+        ByteBuffer buffByteBuffer = ByteBuffer.allocate(1024 * 1024 * 50); //设置缓冲区的字节码大小
+        while(true) {
+            buffByteBuffer.clear();
+            int read = channel.read(buffByteBuffer);
+            if(read == -1) {
+                break;
+            }
+            buffByteBuffer.flip();
+            tableJsonData = new String(buffByteBuffer.array(),0,buffByteBuffer.remaining());
+        }
+        JSONObject str = JSONObject.fromObject(tableJsonData);
+        JSONObject us = str.getJSONObject("ETHICS_PROJECT");
+        String string = us.getJSONObject("data").toString();
+        System.out.println(string.replaceAll("[{:\"\"}]", ""));
+//        JSONObject us = str.getJSONObject("ETHICS_PROJECT");
+//        JSONObject jsobObject = str.getJSONObject("PROJECT_COMPANY");
+//        JSONArray josnDataArray = jsobObject.getJSONArray("data");
+//        for(int i=0;i<josnDataArray.size();i++){
+//            JSONObject object=josnDataArray.getJSONObject(i);
+//            System.out.println(object.getString("name"));
+//        }
+//        System.out.println(us.getJSONObject("data").getString("name"));
+
+//        us.getJSONArray("data");
+//        JsonObject jsonObj = parser.parse(tableJsonData).getAsJsonObject();
+//        jsonObj.get("key01").getAsString();
+//        JsonPrimitive flagJson = root.getAsJsonPrimitive("ETHICS_PROJECT");
+//        boolean flag = flagJson.getAsBoolean();
+//        // 获得 data 节点的值，data 节点为Object数据节点
+//        JsonObject dataJson = root.getAsJsonObject("data");
+//        System.out.println(dataJson);
     }
 }

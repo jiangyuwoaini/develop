@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans SYSTEM "D:\Program Files\eclipse\CodePath\xmlApp\resource\factory.dtd">
+<beans>
+	<bean class="com.jiangyu.pojo.User" id="bossId">
+		<property name="id"  value="10000" type="long"/>
+ 		<property name="name"  value="disen" type="string"/>
+		<property name="password"  value="123" type="string"/>
+		<property name="phone"  value="17791692095" type="string"/>
+		<property name="email"  value="610039018@qq.com" type="string"/>
+	</bean>
+	<bean class="com.jiangyu.pojo.Order" id="orderId">
+		<property name="orderNo"  value="20210131" />
+	</bean>
+</beans>

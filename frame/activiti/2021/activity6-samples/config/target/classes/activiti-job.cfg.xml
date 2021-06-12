@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+           	
+	<bean id="processEngineConfiguration" class="org.activiti.engine.impl.cfg.StandaloneInMemProcessEngineConfiguration">
+<!--		<property name="commandInvoker" ref="commandInvoker" />-->
+		<property name="enableDatabaseEventLogging"  value="true"/> <!-- 是否开启事件日志 默认为false -->
+		<property name="enableVerboseExecutionTreeLogging" value="true" /> <!-- 是否展示出一个执行过程的日志 -->
+		<property name="asyncExecutorActivate" value="true" /> <!-- 使用默认异步线程池 -->
+		<property name="eventListeners">
+			<list>
+				<bean class="com.lblz.activity.event.JobEventListener" />
+			</list>
+		</property>
+<!--		<property name="asyncExecutor" ref="asyncJobExecutor" />--> <!--配置自定义连接池 -->
+
+	</bean>
+<!--	<bean id="asyncJobExecutor" class="org.activiti.engine.impl.asyncexecutor.DefaultAsyncJobExecutor">-->
+<!--		<property name="executorService" ref="ExecutorService"></property>-->
+<!--	</bean>-->
+<!--	<bean id="ExecutorService"class="org.springframework.scheduling.concurrent.ThreadPoolExecutorFactoryBean">-->
+<!--		<property name="threadNamePrefix"></property> &lt;!&ndash; 线程池前缀 &ndash;&gt;-->
+<!--		<property name="corePoolSize" value="5" ></property> &lt;!&ndash; 默认线程书 &ndash;&gt;-->
+<!--		<property name="maxPollSize" value="20" ></property> &lt;!&ndash; 最大线程数 &ndash;&gt;-->
+<!--		<property name="queueCapacity" value="100"></property> &lt;!&ndash; 序列线程数 &ndash;&gt;-->
+<!--		<property name="rejectedExecutionHandler">-->
+<!--			<bean class="java.util.concurrent.ThreadPoolExecutor$AbortPolicy"></bean>-->
+<!--		</property>-->
+<!--	</bean>-->
+	<bean id="commandInvoker" class="com.lblz.activity.interceptor.MDCCcommandInvoker"></bean>
+</beans>

@@ -7,7 +7,7 @@ import org.activiti.engine.logging.LogMDC;
 
 /**
  * @author lblz
- * @deacription
+ * @deacription mdc拦截器
  * @date 2021/5/8 1:58
  **/
 public class MDCCcommandInvoker extends DebugCommandInvoker {

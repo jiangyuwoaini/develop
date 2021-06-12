@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+           	
+	<bean id="processEngineConfiguration" class="org.activiti.engine.impl.cfg.StandaloneInMemProcessEngineConfiguration">
+<!--		<property name="commandInvoker" ref="commandInvoker" />-->
+		<property name="enableDatabaseEventLogging"  value="true"/> <!-- 是否开启事件日志 默认为false -->
+		<property name="enableVerboseExecutionTreeLogging" value="true" /> <!-- 是否展示出一个执行过程的日志 -->
+		<property name="customPreCommandInterceptors">
+			<list>
+				<bean class="com.lblz.activity.interceptor.DurationCommonandInterceptor" />
+			</list>
+		</property>
+		<property name="customPostCommandInterceptors"><!-- 这个跟上面的差不多 好像比上面的要快一些 -->
+			<list>
+				<bean class="com.lblz.activity.interceptor.DurationCommonandInterceptor" />
+			</list>
+		</property>
+	</bean>
+	<bean id="commandInvoker" class="com.lblz.activity.interceptor.MDCCcommandInvoker"></bean>
+</beans>

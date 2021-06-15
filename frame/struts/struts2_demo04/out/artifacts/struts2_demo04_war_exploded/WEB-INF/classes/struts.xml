@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+		"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+		"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+
+	<!-- 配置 Struts 可以受理的请求的扩展名 -->
+	<constant name="struts.action.extension" value="action,do,"></constant>
+
+	<!-- 打开允许动态方法调用的开关, 默认是 false-->
+	<constant name="struts.enable.DynamicMethodInvocation" value="true"></constant>
+
+	<package name="default" namespace="/" extends="struts-default">
+		<global-results>
+			<result name="input">/input.jsp</result>
+		</global-results>
+
+		<global-exception-mappings>
+			<exception-mapping exception="java.lang.ArithmeticException" result="input"></exception-mapping>
+		</global-exception-mappings>
+		<action name="UserAction-*"
+				class="com.lblz.struts.action.UserAction" method="{1}">
+			<result  name="{1}-success">/success.jsp</result>
+		</action>
+
+		<action name="product-save" class="com.lblz.struts.action.ognl.Product" method="save">
+			<result>/details.jsp</result>
+		</action>
+
+		<action name="login-ui">
+			<result>/input.jsp</result>
+		</action>
+
+		<action name="testTag" class="com.lblz.struts.action.ognl.Product" method="testTag">
+			<result>/common-tag.jsp</result>
+		</action>
+
+		<action name="save" class="com.lblz.struts.action.ognl.UserAction" method="save">
+			<result name="input">/form-tag.jsp</result>
+		</action>
+
+	</package>
+
+<!--	<package name="testPackage" namespace="/lblz" extends="struts-default">-->
+<!--		<action name="testAction"-->
+<!--				class="com.lblz.struts.action.TestAction">-->
+<!--			<result>/success.jsp</result>-->
+<!--		</action>-->
+<!--	</package>-->
+
+
+</struts>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<!-- 加载属性文件 -->
+	<properties resource="db.properties">
+		<!-- properties中还可以配置一些属性名和属性值 -->
+		<!-- <property name="jdbc.driver" value="" /> -->
+	</properties>
+	<!-- 定义别名 -->
+	<typeAliases>
+		 <typeAlias type="com.jianyu.entity.Person" alias="Person"/>
+	</typeAliases>
+	<!--  -->
+	<environments default="development">
+		<environment id="development">
+			<!-- 使用jdbc事物管理,事物控制由mybatis -->
+			<transactionManager type="JDBC" />
+			<!-- 配置数据库连接池 -->
+			<dataSource type="POOLED">
+				<property name="driver" value="${jdbc.driver}"/>
+				<property name="url" value="${jdbc.url}"/>
+				<property name="username" value="${jdbc.username}"/>
+				<property name="password" value="${jdbc.password}"/>
+			</dataSource>
+		</environment>
+	</environments>
+	<!-- 加载映射文件 -->
+	<mappers>
+		<!--第一种:写映射文件的名字-->
+		<mapper resource="PersonMapper.xml"></mapper>
+
+        <!--第二种:写类名,一定要有个映射文件与之对应
+        		如果没有，那么在UserMapper要声明注解-->
+        <!--<mapper class="com.gyf.mapper.UserMapper"></mapper>-->
+
+        <!--第三种：可以写包名-->
+        <package name="com.jiangyu.mapper.*Mapper.xml"></package>
+	</mappers>
+</configuration>

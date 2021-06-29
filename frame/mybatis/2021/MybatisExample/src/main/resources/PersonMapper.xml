@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- personMapper -->
+<mapper namespace="com.jianyu.mapper.PersonMapper">
+	<!-- sql片段 -->
+	<sql id="consutomSql">
+		<if test="customPerson !=null and customPerson !=''">
+			<if test="customPerson.name !=null and customPerson.name !=''">
+				and name =#{customPerson.name,jdbcType=VARCHAR}
+			</if>
+			<if test="customPerson.birthday !=null and customPerson.birthday !=''">
+				and birthday =#{customPerson.birthday,jdbcType=VARCHAR}
+			</if>
+		</if>
+	</sql>
+	<select id="queryPersonVo" parameterType="com.jianyu.vo.PersonVo" resultType="Person">
+		 SELECT * FROM person
+		 	<where>
+		 		<include refid="consutomSql"></include>
+		 	</where>
+	</select>
+	<select id="queryPersonById" parameterType="Person" resultType="Person">
+		SELECT * FROM person WHERE 1 = 1
+		<if test="id != null">
+			and id = #{id}
+		</if> 
+		<if test="name != null">
+			and name like "%"#{name,jdbcType=VARCHAR}"%"
+		</if> 
+	</select>
+	<insert id="insertPerson" parameterType="Person">
+		<selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+	        SELECT LAST_INSERT_ID()
+	    </selectKey>
+		INSERT INTO person(name,age,sex,address,birthday)value(#{name},#{age},#{sex},#{address},#{birthday})
+	</insert>
+	<delete id="deleteById" parameterType="java.lang.Integer">
+		DELETE FROM person WHERE id = #{id}
+	</delete>
+	<update id="updatePersonById" parameterType="Person">
+		UPDATE person 
+			<trim prefix="set" suffixOverrides=",">
+				<if test="name != null">
+					name  = #{name,jdbcType=VARCHAR},
+				</if>
+				<if test="sex != null">
+					sex  = #{sex,jdbcType=INTEGER},
+				</if> 
+				<if test="birthday != null">
+					birthday = #{birthday,jdbcType=DATE},
+				</if> 
+				<if test="address != null">
+					address  = #{address,jdbcType=VARCHAR},
+				</if> 
+				<if test="age != null">
+					age  = #{age,jdbcType=INTEGER},
+				</if>  
+			</trim>
+			<where>
+				id = #{id}
+			</where>
+	</update>
+</mapper>
